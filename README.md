@@ -1,4 +1,4 @@
-# ML - Project Overview
+# ML - Labs Overview
 
 This repository contains the laboratory assignments for the course *Machine Learning I*:
 
