@@ -8,3 +8,17 @@ This repository contains the laboratory assignments for the course *Machine Lear
 - **Lab 4**: Basic autoencoder  
 
 Each lab is organized in its own dedicated folder, and the final **report** consolidates the results, methodologies, and insights from all the assignments.
+
+---
+
+## Launch the programs
+Before launch each lab it is necessary install the virtual environment to install the libraries dependency.
+```
+#create the virtual envieronment
+python3 -m venv .venv
+source .venv/bin/activate (or deactive)
+
+# install the dependency
+pip install numpy pandas scikit-learn    #for Lab 1
+
+```
