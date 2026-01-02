@@ -22,6 +22,7 @@ source .venv/bin/activate (or deactivate)
 pip install numpy pandas scikit-learn    #Lab1
 pip install matplotlib #Lab1
 pip install tensorflow #Lab2
+pip install scikit-learn #Lab2
 
 ```
 
