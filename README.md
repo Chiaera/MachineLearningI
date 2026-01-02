@@ -16,7 +16,7 @@ Before launch each lab it is necessary install the virtual environment to instal
 ```
 #create the virtual envieronment
 python3 -m venv .venv
-source .venv/bin/activate (or deactive)
+source .venv/bin/activate (or deactivate)
 
 # install the dependency
 pip install numpy pandas scikit-learn    #Lab1
