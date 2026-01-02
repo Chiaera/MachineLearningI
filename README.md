@@ -19,6 +19,6 @@ python3 -m venv .venv
 source .venv/bin/activate (or deactive)
 
 # install the dependency
-pip install numpy pandas scikit-learn    #for Lab 1
-
+pip install numpy pandas scikit-learn    #Lab1
+pip install matplotlib #Lab1
 ```
