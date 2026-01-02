@@ -21,4 +21,21 @@ source .venv/bin/activate (or deactivate)
 # install the dependency
 pip install numpy pandas scikit-learn    #Lab1
 pip install matplotlib #Lab1
+pip install tensorflow #Lab2
+
+```
+
+### Troubleshooting
+#### 'pip' error
+If you don't have 'pip' upgradable, especially if you have the python version **Python 3.12**, you can run this code:
+```
+# recreate the virtual environment
+deactivate
+rm -rf .venv
+python3.12 -m venv .venv
+source .venv/bin/activate
+
+# update pip
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip setuptools wheel
 ```
