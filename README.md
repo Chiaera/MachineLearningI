@@ -18,11 +18,11 @@ Before launch each lab it is necessary install the virtual environment to instal
 python3 -m venv .venv
 source .venv/bin/activate (or deactivate)
 
-# install the dependency
-pip install numpy pandas scikit-learn    #Lab1
-pip install matplotlib #Lab1 Lab2
-pip install tensorflow #Lab2
-pip install scikit-learn #Lab2
+# install the useful dependency
+pip install numpy pandas scikit-learn    #
+pip install matplotlib 
+pip install tensorflow 
+pip install scikit-learn 
 
 ```
 
