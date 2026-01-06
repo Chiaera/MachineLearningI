@@ -12,23 +12,28 @@ Each lab is organized in its own dedicated folder, and the final **report** cons
 ---
 
 ## Launch the programs
-Before launch each lab it is necessary install the virtual environment to install the libraries dependency.
+Before running any lab, you must create a virtual environment and install the required dependencies. 
 ```
-#create the virtual envieronment
+# Create the virtual environment
 python3 -m venv .venv
-source .venv/bin/activate (or deactivate)
+source .venv/bin/activate # (use 'deactivate' to exit)
 
-# install the useful dependency
-pip install numpy pandas scikit-learn    #
-pip install matplotlib 
-pip install tensorflow 
-pip install scikit-learn 
-
+# Install dependencies
+pip install numpy pandas scikit-learn
+pip install matplotlib
+pip install tensorflow
 ```
+Each lab contains its own ```main.py ```.
+Example:
+```
+cd lab3
+python mainTask.py
+```
+
 
 ### Troubleshooting
-#### 'pip' error
-If you don't have 'pip' upgradable, especially if you have the python version **Python 3.12**, you can run this code:
+#### 'pip' error (Python 3.12)
+If you cannot upgrade pip (common with Python 3.12), recreate the environment as follows:
 ```
 # recreate the virtual environment
 deactivate
@@ -40,3 +45,4 @@ source .venv/bin/activate
 python -m ensurepip --upgrade
 python -m pip install --upgrade pip setuptools wheel
 ```
+---
