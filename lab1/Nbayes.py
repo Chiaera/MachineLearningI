@@ -1,6 +1,8 @@
 from collections import defaultdict
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import pandas as pd
 
 # BAYER CLASSIFIER
 
@@ -44,6 +46,36 @@ def calculate_feature_class_likelihood(x, y, levels, alpha=1):
 
     return feature_class_likelihood
 
+# Graphical explanation
+def plot_split_distribution(y, y_train, y_test, dataset_name):
+    # normalize distribution
+    before = y.value_counts(normalize=True)
+    train = y_train.value_counts(normalize=True)
+    test = y_test.value_counts(normalize=True)
+
+    # classes union
+    classes = sorted(set(before.index) | set(train.index) | set(test.index))
+    before = before.reindex(classes, fill_value=0)
+    train = train.reindex(classes, fill_value=0)
+    test = test.reindex(classes, fill_value=0)
+
+    x = np.arange(len(classes))
+    width = 0.25
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(x - width, before, width, label="Before split")
+    plt.bar(x, train, width, label="Train set")
+    plt.bar(x + width, test, width, label="Test set")
+
+    plt.ylabel("Proportion")
+    plt.title(f"{dataset_name} – Class distribution")
+    plt.xticks([]) 
+    plt.legend()
+    plt.grid(axis="y", linestyle="--", alpha=0.6)
+
+    plt.tight_layout()
+    plt.show()
+    plt.show()
 
 #----------------------------------------------------------------------------------------------------------------------------#
 

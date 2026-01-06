@@ -3,18 +3,37 @@ import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
-from Nbayes import Nbayes
+from Nbayes import Nbayes, plot_split_distribution
+
+
+# Accuracy comparison table for different smoothing values
+def accuracy_comparison_table(X_train, X_test, y_train, y_test, levels):
+    results = []
+
+    for alpha in [0, 1]:
+        model = Nbayes(unknown='discard', alpha=alpha)
+        model.fit(X_train, y_train, levels=levels)
+        acc = model.test(X_test, y_test)
+
+        results.append({
+            "Smoothing (alpha)": alpha,
+            "Accuracy": round(acc, 3)
+        })
+
+    return pd.DataFrame(results)
+
 
 def main():
     # IMPORT DATA SET
     main_dir = Path(__file__).resolve().parent
     data_path = main_dir / "data"
-    
-    DATASET = "breast"  
+
+    DATASET = "weather"  # "weather" or "breast_cancer"
     if DATASET == "weather":
         print("--- WEATHER ---")
         weather_path = data_path / "weatherData/weatherData.txt"
-        df = pd.read_csv(weather_path, delim_whitespace=True, header=0)
+        df = pd.read_csv(weather_path, sep=r'\s+', header=0)
+
         #print(df.head()) -> table OK
         #print(df.shape) -> shape OK 
     else:
@@ -51,6 +70,15 @@ def main():
 
     # SPLIT
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, shuffle=True, stratify=y, random_state=42)
+
+    dataset_name = "Weather dataset" if DATASET == "weather" else "Breast Cancer dataset"
+
+    plot_split_distribution(
+        y,
+        y_train,
+        y_test,
+        dataset_name
+    )
 
 
     # train LEVEL 
@@ -107,6 +135,17 @@ def main():
         print(f"Discard: {n_discard} su {len(y_pred)}")
         for i in discard:
             print(f"Row {i}: {X_test.iloc[i].to_dict()}")
+
+
+    # results
+    acc_table = accuracy_comparison_table(
+        X_train, X_test,
+        y_train, y_test,
+        levels
+    )
+
+    print("\nAccuracy comparison:")
+    print(acc_table)
         
 
 
